@@ -1,0 +1,9 @@
+{
+  "name": "alacritty",
+  "description": "GPU-accelerated terminal emulator",
+  "category": "terminals",
+  "required": false,
+  "check": "alacritty --version",
+  "install": null,
+  "notes": "Install from https://alacritty.org or use: apt install -y alacritty (if available)"
+}

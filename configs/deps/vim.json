@@ -1,0 +1,8 @@
+{
+  "name": "vim",
+  "description": "Vim text editor",
+  "category": "editors",
+  "required": false,
+  "check": "vim --version",
+  "install": "apt install -y vim"
+}

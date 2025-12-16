@@ -1,0 +1,9 @@
+{
+  "name": "helix",
+  "description": "Helix text editor",
+  "category": "editors",
+  "required": false,
+  "check": "hx --version",
+  "install": null,
+  "notes": "Install from https://helix-editor.com or build from source"
+}

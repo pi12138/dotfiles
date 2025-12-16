@@ -1,0 +1,8 @@
+{
+  "name": "jq",
+  "description": "Command-line JSON processor",
+  "category": "essential",
+  "required": true,
+  "check": "jq --version",
+  "install": "apt install -y jq"
+}

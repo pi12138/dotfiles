@@ -1,0 +1,9 @@
+{
+  "name": "nvim",
+  "description": "Neovim text editor",
+  "category": "editors",
+  "required": false,
+  "check": "nvim --version",
+  "install": null,
+  "notes": "Install from https://neovim.io or use: apt install -y neovim (may be outdated)"
+}

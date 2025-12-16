@@ -1,0 +1,9 @@
+{
+  "name": "zellij",
+  "description": "Modern terminal workspace",
+  "category": "terminals",
+  "required": false,
+  "check": "zellij --version",
+  "install": null,
+  "notes": "Install from https://zellij.dev"
+}

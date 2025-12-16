@@ -1,0 +1,8 @@
+{
+  "name": "zsh",
+  "description": "Z Shell",
+  "category": "essential",
+  "required": true,
+  "check": "zsh --version",
+  "install": "apt install -y zsh"
+}

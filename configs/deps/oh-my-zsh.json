@@ -1,0 +1,9 @@
+{
+  "name": "oh-my-zsh",
+  "description": "Oh My Zsh framework",
+  "category": "zsh",
+  "required": true,
+  "dependencies": ["zsh", "git", "curl"],
+  "check": "test -d ~/.oh-my-zsh",
+  "install": "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" \"\" --unattended"
+}

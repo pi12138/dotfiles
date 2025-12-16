@@ -1,0 +1,8 @@
+{
+  "name": "tmux",
+  "description": "Terminal multiplexer",
+  "category": "terminals",
+  "required": false,
+  "check": "tmux -V",
+  "install": "apt install -y tmux"
+}

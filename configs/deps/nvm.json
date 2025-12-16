@@ -1,0 +1,9 @@
+{
+  "name": "nvm",
+  "description": "Node Version Manager",
+  "category": "version-managers",
+  "required": false,
+  "dependencies": ["git", "curl"],
+  "check": "test -d ~/.nvm",
+  "install": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash"
+}

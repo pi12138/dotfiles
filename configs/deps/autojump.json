@@ -1,0 +1,8 @@
+{
+  "name": "autojump",
+  "description": "Fast directory navigation tool",
+  "category": "zsh",
+  "required": false,
+  "check": "command -v autojump",
+  "install": "apt install -y autojump"
+}

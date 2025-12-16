@@ -1,0 +1,8 @@
+{
+  "name": "git",
+  "description": "Git version control system",
+  "category": "essential",
+  "required": true,
+  "check": "git --version",
+  "install": "apt install -y git"
+}

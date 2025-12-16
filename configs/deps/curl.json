@@ -1,0 +1,8 @@
+{
+  "name": "curl",
+  "description": "Command line HTTP client",
+  "category": "essential",
+  "required": true,
+  "check": "curl --version",
+  "install": "apt install -y curl"
+}

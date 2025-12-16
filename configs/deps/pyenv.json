@@ -1,0 +1,10 @@
+{
+  "name": "pyenv",
+  "description": "Python Version Manager",
+  "category": "version-managers",
+  "required": false,
+  "dependencies": ["git", "curl"],
+  "check": "command -v pyenv",
+  "install": "curl https://pyenv.run | bash",
+  "notes": "After installation, add pyenv initialization to your shell configuration"
+}

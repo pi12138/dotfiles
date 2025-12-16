@@ -1,0 +1,9 @@
+{
+  "name": "zsh-autosuggestions",
+  "description": "Fish-like autosuggestions for zsh",
+  "category": "zsh",
+  "required": false,
+  "dependencies": ["oh-my-zsh"],
+  "check": "test -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions",
+  "install": "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "zsh-syntax-highlighting",
+  "description": "Syntax highlighting for zsh",
+  "category": "zsh",
+  "required": false,
+  "dependencies": ["oh-my-zsh"],
+  "check": "test -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting",
+  "install": "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+}
