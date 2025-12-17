@@ -68,3 +68,47 @@ confirm() {
 get_dotfiles_dir() {
     echo "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 }
+
+# ==============================
+# 安装状态管理
+# ==============================
+
+STATE_FILE="$(get_dotfiles_dir)/.install_state"
+
+# 初始化状态文件
+init_state() {
+    > "$STATE_FILE"
+    info "初始化安装状态文件: $STATE_FILE"
+}
+
+# 记录安装成功的软件
+record_installed() {
+    local package="$1"
+    echo "$package" >> "$STATE_FILE"
+    success "记录安装: $package"
+}
+
+# 检查软件是否已记录为安装
+is_installed_recorded() {
+    local package="$1"
+    [ -f "$STATE_FILE" ] && grep -q "^${package}$" "$STATE_FILE"
+}
+
+# 获取所有已安装的软件列表
+get_installed_list() {
+    if [ -f "$STATE_FILE" ]; then
+        cat "$STATE_FILE"
+    fi
+}
+
+# 显示安装状态
+show_install_state() {
+    if [ -f "$STATE_FILE" ]; then
+        info "已安装的软件:"
+        while read -r package; do
+            echo "  ✓ $package"
+        done < "$STATE_FILE"
+    else
+        warning "未找到安装状态文件"
+    fi
+}
