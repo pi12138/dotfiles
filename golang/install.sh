@@ -52,7 +52,7 @@ GO_PROFILE="${SHELL_CFG_PATH}/go.sh"
 echo "写入环境变量配置到 ${GO_PROFILE} ..."
 tee "${GO_PROFILE}" > /dev/null << EOF
 # Go 语言环境变量
-export GOROOT=\${INSTALL_DIR}/go
+export GOROOT=\${HOME}/.local/go
 export GOPATH=\${HOME}/.go
 EOF
 
