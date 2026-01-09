@@ -103,3 +103,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+if [[ -d "$HOME/.config/shell" ]]; then
+    for file in ~/.config/shell/*.sh; do
+        [[ -r "$file" ]] && . "$file"  # -r 检查可读
+    done
+    unset file  # 清理循环变量
+fi
