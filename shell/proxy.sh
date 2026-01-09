@@ -6,7 +6,7 @@
 # Enable terminal proxy
 proxy_on() {
     local addr="${1:-$PROXY_ADDR}"
-    local port="${2:-$PROXY_PORT:-7890}"
+    local port="${2:-${PROXY_PORT:-7890}}"
 
     if [[ -z "$addr" ]]; then
         echo "❌ 未指定代理地址"
