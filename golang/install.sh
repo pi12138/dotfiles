@@ -60,6 +60,8 @@ if [ ! -d "$HOME/.local/bin" ]; then
     mkdir -p "$HOME/.local/bin"
 fi 
 
+${INSTALL_DIR}/go/bin/go env -w GOPROXY=https://goproxy.cn,direct
+
 ln -sf "${INSTALL_DIR}/go/bin/go" "$HOME/.local/bin/go"
 ln -sf "${INSTALL_DIR}/go/bin/gofmt" "$HOME/.local/bin/gofmt"
 
