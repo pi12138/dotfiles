@@ -110,3 +110,7 @@ if [[ -d "$HOME/.config/shell" ]]; then
     done
     unset file  # 清理循环变量
 fi
+
+
+# setopt EXTENDED_HISTORY
+HIST_STAMPS="%Y-%m-%d %H:%M:%S"
