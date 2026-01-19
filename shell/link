@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SHELL_DIR="$HOME/.config/shell"
+
+if [[ ! -d "$SHELL_DIR" ]]; then
+    echo "发现 ~/.config/shell 不存在，正在创建软链接..."
+    mkdir -p "$HOME/.config"
+    ln -s "$(pwd)" "$SHELL_DIR"
+    echo "软链接创建完成: $(pwd) -> $SHELL_DIR"
+elif [[ -L "$SHELL_DIR" ]]; then
+    echo "已存在软链接 -> $(readlink -f "$SHELL_DIR")"
+else
+    echo "错误：$SHELL_DIR 已存在且不是软链接！"
+    echo "现有内容："
+    ls -la "$SHELL_DIR" | head -5
+    echo "请手动处理后再运行此脚本。"
+    exit 1
+fi
+
