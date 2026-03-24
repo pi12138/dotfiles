@@ -10,8 +10,6 @@ patch:
   # ==========================================
   # 2. 核心：中英切换与修饰键行为拦截
   # ==========================================
-  "ascii_composer/good_old_caps_lock": false
-  "ascii_composer/switch_key/Caps_Lock": commit_code  # 短按 Caps 切换中英
   "ascii_composer/switch_key/Shift_L": noop           # 彻底解放左 Shift，敲代码防误触
   "ascii_composer/switch_key/Shift_R": commit_code    # 右 Shift 切换中英
 
