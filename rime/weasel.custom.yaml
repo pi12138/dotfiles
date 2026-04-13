@@ -1,0 +1,3 @@
+patch:
+  "style/horizontal": false # 设置为竖排
+  "style/inline_preedit": false # 设置为回车后上屏（可选，竖排通常这样更协调）
