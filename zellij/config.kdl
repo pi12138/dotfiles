@@ -4,7 +4,9 @@
 
 keybinds clear-defaults=true {
     locked {
-        bind "Ctrl g" { SwitchToMode "normal"; }
+        // 【核心开关】按下 F12 解锁，进入 Normal 模式管理 Zellij
+        bind "F12" { SwitchToMode "normal"; }
+        // bind "Ctrl g" { SwitchToMode "normal"; }
 
         // --- Locked 模式下的“特权”导航，无缝穿梭 ---
         bind "Alt Left" { MoveFocus "Left"; }
