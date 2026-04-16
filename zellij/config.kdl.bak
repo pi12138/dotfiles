@@ -1,0 +1,50 @@
+// 1. 紧凑布局，干掉底部提示栏，最大化可视区域
+default_layout "compact"
+
+// 2. 启动即默认上锁，完全放行你的所有业务快捷键
+default_mode "locked"
+
+keybinds {
+    locked {
+        // 【核心开关】按下 F12 解锁，进入 Normal 模式管理 Zellij
+        bind "F12" { SwitchToMode "Normal"; }
+
+        // --- Locked 模式下的“特权”导航，无缝穿梭 ---
+        bind "Alt Left" { MoveFocus "Left"; }
+        bind "Alt Right" { MoveFocus "Right"; }
+        bind "Alt Up" { MoveFocus "Up"; }
+        bind "Alt Down" { MoveFocus "Down"; }
+
+        bind "Alt 1" { GoToTab 1; }
+        bind "Alt 2" { GoToTab 2; }
+        bind "Alt 3" { GoToTab 3; }
+        bind "Alt 4" { GoToTab 4; }
+        bind "Alt 5" { GoToTab 5; }
+        
+        bind "Alt [" { GoToPreviousTab; }
+        bind "Alt ]" { GoToNextTab; }
+    }
+
+    normal {
+        // 【核心开关】操作完毕后，再次按下 F12 重新锁死
+        bind "F12" { SwitchToMode "Locked"; }
+        
+        // 解绑官方默认的锁定键，防止误触
+        unbind "Ctrl g"
+    }
+
+    shared_except "locked" {
+        // 在其他所有模式下，按 F12 统统充当“一键退回安全锁定状态”的逃生键
+        bind "F12" { SwitchToMode "Locked"; }
+        
+        unbind "Ctrl g"
+        
+        // 确保在偶尔未锁定的状态下，你的 Alt 导航肌肉记忆依然生效
+        bind "Alt Left" { MoveFocus "Left"; }
+        bind "Alt Right" { MoveFocus "Right"; }
+        bind "Alt Up" { MoveFocus "Up"; }
+        bind "Alt Down" { MoveFocus "Down"; }
+        bind "Alt 1" { GoToTab 1; }
+        bind "Alt 2" { GoToTab 2; }
+    }
+}
