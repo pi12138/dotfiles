@@ -17,7 +17,8 @@ proxy_on() {
     export http_proxy="$proxy"
     export https_proxy="$proxy"
     export all_proxy="$proxy"
-
+    export HTTP_PROXY=$proxy
+    export HTTPS_PROXY=$proxy
     echo "终端代理已开启：$proxy"
 }
 
