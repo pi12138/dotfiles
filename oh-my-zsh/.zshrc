@@ -1,14 +1,13 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
+# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
+# load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
 ZSH_THEME="ys"
 
 # Set list of themes to pick from when loading at random
@@ -61,7 +60,7 @@ ZSH_THEME="ys"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -71,9 +70,21 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump docker docker-compose git zsh-autosuggestions zsh-syntax-highlighting )
+export NVM_DIR="$HOME/.nvm"
 
-source $ZSH/oh-my-zsh.sh
+# Defer NVM initialization until node/npm/nvm is used.
+zstyle ':omz:plugins:nvm' lazy yes
+
+plugins=(
+    git
+    extract
+    history
+    nvm
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -86,41 +97,62 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='nvim'
+#   export EDITOR='mvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
+# export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-if [[ -d "$HOME/.config/shell" ]]; then
-    for file in ~/.config/shell/*.sh; do
-        [[ -r "$file" ]] && . "$file"  # -r 检查可读
-    done
-    unset file  # 清理循环变量
-fi
+setopt no_share_history
 
 
-# setopt EXTENDED_HISTORY
-HIST_STAMPS="%Y-%m-%d %H:%M:%S"
+# export GOROOT=/usr/local/go
+export GOPATH="$HOME/.go"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+typeset -U path PATH
+path+=("$GOPATH/bin" "$HOME/.local/bin")
+export PATH
 
-# Pyenv configuration
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# ==============================
+# Proxy Management Functions
+# ==============================
+
+# Enable terminal proxy
+proxy_on() {
+    local addr="${1:-$PROXY_ADDR}"
+    local port="${2:-${PROXY_PORT:-7890}}"
+
+    if [[ -z "$addr" ]]; then
+        echo "❌ 未指定代理地址"
+        return 1
+    fi
+
+    local proxy="http://${addr}:${port}"
+    export http_proxy="$proxy"
+    export https_proxy="$proxy"
+    export all_proxy="$proxy"
+    export ws_proxy="$proxy"
+    export wss_proxy="$proxy"
+    export HTTP_PROXY="$proxy"
+    export HTTPS_PROXY="$proxy"
+    export ALL_PROXY="$proxy"
+    export WS_PROXY="$proxy"
+    export WSS_PROXY="$proxy"
+    echo "终端代理已开启：$proxy"
+}
+
+
+# Disable terminal proxy
+function proxy_off() {
+    unset http_proxy https_proxy all_proxy ws_proxy wss_proxy
+    unset HTTP_PROXY HTTPS_PROXY ALL_PROXY WS_PROXY WSS_PROXY
+    echo "终端代理已关闭。"
+}
