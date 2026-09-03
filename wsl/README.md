@@ -3,7 +3,7 @@
 这个目录维护 WSL 隔离相关配置：
 
 - `templates/wsl.conf.tpl`：关闭 Windows 整盘自动挂载和 PATH 注入，开启 systemd，并设置默认 WSL 用户。
-- `templates/fstab.tpl`：只读挂载 VS Code WSL 所需的 Windows 目录，并在挂载时自动创建目标目录。
+- `templates/fstab.tpl`：只读挂载 VS Code WSL 所需的 Windows 目录；带 `nofail`，Windows 源目录暂缺时跳过挂载，避免 WSL 启动报错，目录就绪后执行 `sudo mount -a` 即可生效。
 - `install.sh`：渲染模板并安装到 `/etc/wsl.conf`、`/etc/fstab`。
 
 预览生成结果：
