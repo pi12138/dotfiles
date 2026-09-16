@@ -8,11 +8,6 @@ keybinds clear-defaults=true {
         // bind "Ctrl g" { SwitchToMode "normal"; }
 
         // --- Locked 模式下的“特权”导航，无缝穿梭 ---
-        bind "Alt Left" { MoveFocus "Left"; }
-        bind "Alt Right" { MoveFocus "Right"; }
-        bind "Alt Up" { MoveFocus "Up"; }
-        bind "Alt Down" { MoveFocus "Down"; }
-
         bind "Alt [" { GoToPreviousTab; }
         bind "Alt ]" { GoToNextTab; }
     }
@@ -102,10 +97,6 @@ keybinds clear-defaults=true {
         bind "tab" { MovePane; }
     }
     scroll {
-        bind "Alt left" { MoveFocusOrTab "left"; SwitchToMode "locked"; }
-        bind "Alt down" { MoveFocus "down"; SwitchToMode "locked"; }
-        bind "Alt up" { MoveFocus "up"; SwitchToMode "locked"; }
-        bind "Alt right" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
         bind "e" { EditScrollback; SwitchToMode "locked"; }
         bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "c" { CopyLastCommandOutput; }
@@ -181,10 +172,6 @@ keybinds clear-defaults=true {
         bind "Alt 5" { GoToTab 5; }
     }
     shared_among "normal" "locked" {
-        bind "Alt left" { MoveFocusOrTab "left"; }
-        bind "Alt down" { MoveFocus "down"; }
-        bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt =" { Resize "Increase"; }
